@@ -1,0 +1,210 @@
+@keyframes slideIn {
+  from {
+    transform: translateX(max(40vw, 550px));
+  }
+  to {
+    transform: none;
+    display: flex;
+  }
+}
+@keyframes slideOut {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translateX(max(40vw, 550px));
+  }
+}
+.annotations-section {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  background-color: white;
+  width: max(35vw, 500px);
+  z-index: 2000;
+  box-shadow: 0 6px 12px 0px #000;
+  padding: max(2.5vh, 2vw);
+
+  flex-direction: column;
+  align-items: center;
+  gap: max(2vh, 1.5vw);
+}
+.annotations-section.visible {
+  display: flex;
+  transform: none;
+}
+div.cross-icon {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+div.cross-icon img {
+  font-size: max(1.5vh, 1.2vw);
+  aspect-ratio: 1/1;
+  height: 4ch;
+  width: auto;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+div.cross-icon img:hover {
+  cursor: pointer;
+  background-color: #ebebeb;
+  opacity: 0.8;
+}
+
+div.notes-navigation {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: max(3vh, 2.5vw);
+}
+div.notes-navigation h2 {
+  font-size: max(1.7vh, 1.4vw);
+  font-weight: 400;
+  color: #7b7b7b;
+  padding: max(1.2vh, 0.9vw);
+  padding-left: 0;
+  text-align: left;
+  transition: all 0.3s;
+}
+div.notes-navigation h2:hover {
+  cursor: pointer;
+  transform: translateY(-0.4vmax);
+}
+div.notes-navigation h2.current {
+  color: #000;
+  border-bottom: 3px solid #0047ff;
+}
+
+.notes-editor {
+  display: none;
+  flex-direction: column;
+  gap: max(1vh, 0.7vw);
+}
+.notes-editor.explanations {
+  display: none;
+}
+.notes-editor.visible {
+  display: flex;
+}
+.notes-editor.visible .notes-editor > div:nth-child(1) {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  outline: 1px solid #ebeff1;
+  border-radius: 2px;
+}
+.notes-editor p {
+  padding: max(1.5vh, 1vw);
+  font-size: max(1.3vh, 1vw);
+  border-radius: 2px;
+}
+
+.notes-editor > div > div {
+  display: flex;
+  align-items: center;
+  gap: max(1vh, 0.7vw);
+  padding: max(1vh, 0.7vw) max(1.5vh, 1vw);
+}
+.notes-editor > div > div > div {
+  font-size: max(1vh, 0.7vw);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 3ch;
+  padding: max(1.5vh, 1vw);
+  outline: 1px solid #ebeff1;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.notes-editor > div > div > div:hover {
+  cursor: pointer;
+}
+.notes-editor > div[contenteditable="true"] {
+  display: flex;
+  min-height: 40vh;
+  overflow-y: auto;
+  padding: max(1.5vh, 1vw);
+  font-size: max(1.3vh, 1vw);
+  color: #7b7b7b;
+  outline: 1px solid #ebeff1;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+.notes-editor > div[contenteditable="true"]:focus {
+  outline: 1px solid gray;
+  color: black;
+}
+
+.notes-ui {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: max(0.5vh, 0.2vw);
+  margin-top: 10px;
+}
+.save-button {
+  min-width: 10ch;
+  font-size: max(1.5vh, 1.2vw);
+  font-weight: 500;
+  color: #fff;
+  background-color: #96aab5;
+  border: none;
+  border-radius: 40px;
+  padding: max(1vh, 0.7vw) max(2vh, 1.5vw);
+  margin-right: max(1.7vh, 1.4vw);
+  transition: all 0.3s;
+}
+.save-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+div.checkbox {
+  font-size: max(1.5vh, 1.2vw);
+  aspect-ratio: 1/1;
+  height: 2ch;
+  width: auto;
+  border: 2px solid #7b7b7b;
+  margin-right: max(0.5vh, 0.3vw);
+  transition: all 0.3s;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+div.checkbox:hover {
+  cursor: pointer;
+  background-color: #ebeff1;
+}
+div.checkbox.checked {
+  /* background-image: url('../resources/notes-icons/checked-icon.png'); */
+}
+.notes-ui span {
+  font-size: max(1.3vh, 1vw);
+  font-style: italic;
+  font-weight: 500;
+  color: #7b7b7b;
+  margin-right: max(0.5vh, 0.3vw);
+}
+.notes-ui img {
+  font-size: max(1.5vh, 1.2vw);
+  aspect-ratio: 1/1;
+  height: 2.5ch;
+  width: auto;
+  transition: all 0.3s;
+}
+.notes-ui img:hover {
+  cursor: pointer;
+  transform: translateY(-0.2ch);
+  opacity: 0.8;
+}
+
+.custom-container {
+  width: 100%;
+  height: 90%;
+  background-color: white;
+}
+.ql-editor.ql-blank {
+  height: 100px;
+}
