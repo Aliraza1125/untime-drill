@@ -1,3 +1,4 @@
+/* TopBar.css */
 .top-bar {
   width: 100%;
   min-height: max(60px, 8vh);
@@ -8,7 +9,7 @@
   padding: 0 max(2vh, 1.5vw);
   position: fixed;
   top: 0;
-  z-index: 20; /* Higher than dropdown */
+  z-index: 20;
   font-family: "Roboto", sans-serif;
   background-color: white;
 }
@@ -19,17 +20,17 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10; /* Lower than .top-bar */
+  z-index: 10;
 }
 
-/*left side of the bar*/
+/* Left side of the bar */
 .top-bar .left {
   justify-self: start;
-  /* height: 80%; */
   display: flex;
   align-items: center;
   gap: max(1vh, 0.7vw);
 }
+
 .left .exit-button {
   aspect-ratio: 1/1;
   width: auto;
@@ -42,15 +43,18 @@
   border-radius: 8px;
   transition: opacity 0.2s;
 }
+
 .left .exit-button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
+
 .exit-button img {
   font-size: max(2.1vh, 1.8vw);
   height: 1ch;
   width: auto;
 }
+
 .submit-button {
   min-width: 10ch;
   height: 90%;
@@ -66,12 +70,13 @@
   padding: 2.5px;
   user-select: none;
 }
+
 .submit-button:hover {
   cursor: pointer;
   opacity: 0.8;
 }
 
-/*right side of the bar*/
+/* Right side of the bar */
 .top-bar .right {
   height: 100%;
   justify-self: end;
@@ -79,36 +84,43 @@
   align-items: center;
   gap: max(1vh, 0.7vw);
 }
+
 .top-bar .separator {
   height: 80%;
   width: 2px;
   background-color: #aeaeae;
 }
+
 .right .text-tools {
   height: 100%;
   display: flex;
   align-items: center;
   gap: max(0.5vh, 0.2vw);
 }
+
 .top-bar .tool-icon {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);
   height: 3ch;
   width: auto;
 }
+
 .top-bar .tool-icon:hover {
   cursor: pointer;
 }
+
 .tool-icon.selected {
   outline: 3px solid #727272;
 }
 
+/* Display tools */
 .display-tools {
   height: 100%;
   display: flex;
   align-items: center;
   gap: max(0.5vh, 0.2vw);
 }
+
 .display-tools img {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);
@@ -116,10 +128,12 @@
   width: auto;
   position: relative;
 }
+
 .display-tools img:hover {
   cursor: pointer;
 }
-/**Dropdown menu for display tools*/
+
+/* Dropdown menu */
 .dropdown {
   position: absolute;
   min-width: 160px;
@@ -128,69 +142,85 @@
   padding: max(1.2vh, 1vw) max(1vh, 0.7vw);
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  z-index: 1;
+  z-index: 1000;
 }
+
 .dropdown.active {
   display: flex;
 }
+
 .dropdown > div {
   display: grid;
   grid-template-columns: 4fr 1fr;
   padding: max(0.7vh, 0.4vw);
 }
+
 .dropdown > div span {
   font-size: max(1.3vh, 1vw);
   user-select: none;
 }
+
 .dropdown > div input {
   cursor: pointer;
 }
 
+/* Timing tools */
 .timing-tools {
   display: flex;
   align-items: center;
   gap: max(1.2vh, 0.8vw);
 }
+
 .timing-tools > div {
   display: flex;
   flex-direction: column;
   gap: max(0.5vh, 0.2vw);
 }
+
 .timing-tools > div span {
   font-size: max(1.5vh, 1.2vw);
   font-weight: 300;
   user-select: none;
 }
-.timing-tools > div span span {
-  font-weight: 300;
-}
+
 .time-bar-container {
   width: 100%;
   height: 6px;
   background-color: #d2d2d2;
 }
+
 .time-bar {
   width: 100%;
   height: 100%;
   background-color: #037101;
+  transition: width 0.3s ease, background-color 0.3s ease;
 }
+
 .timing-tools > img {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);
   height: 3ch;
   width: auto;
-}
-.timing-tools > img:hover {
   cursor: pointer;
+}
+
+.timing-tools > img:hover {
   opacity: 0.8;
 }
 
+/* Notes tools */
 .notes-tools {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
+
+.notes-tools:hover {
+  opacity: 0.8;
+}
+
 .notes-tools > img {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);

@@ -1,210 +1,407 @@
+/* notes-section.css */
 @keyframes slideIn {
   from {
-    transform: translateX(max(40vw, 550px));
+    transform: translateX(100%);
+    visibility: visible;
   }
   to {
-    transform: none;
-    display: flex;
+    transform: translateX(0);
+    visibility: visible;
   }
 }
+
 @keyframes slideOut {
   from {
-    transform: none;
+    transform: translateX(0);
+    visibility: visible;
   }
   to {
-    transform: translateX(max(40vw, 550px));
+    transform: translateX(100%);
+    visibility: hidden;
   }
 }
-.annotations-section {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  background-color: white;
-  width: max(35vw, 500px);
-  z-index: 2000;
-  box-shadow: 0 6px 12px 0px #000;
-  padding: max(2.5vh, 2vw);
 
-  flex-direction: column;
-  align-items: center;
-  gap: max(2vh, 1.5vw);
-}
-.annotations-section.visible {
+.annotations-section {
+  position: fixed;
+  top: max(60px, 8vh);
+  right: 0;
+  width: max(35vw, 500px);
+  height: calc(100vh - max(60px, 8vh));
+  background-color: white;
+  box-shadow: -4px 0 12px -8px #000;
+  z-index: 2000;
+  padding: max(2.5vh, 2vw);
   display: flex;
-  transform: none;
+  flex-direction: column;
+  gap: max(2vh, 1.5vw);
+  visibility: hidden;
+  transform: translateX(100%);
 }
-div.cross-icon {
+
+.annotations-section.visible {
+  animation: slideIn 0.3s ease-in-out forwards;
+}
+
+.annotations-section:not(.visible) {
+  animation: slideOut 0.3s ease-in-out forwards;
+}
+
+.cross-icon {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
-div.cross-icon img {
+
+.cross-icon img {
   font-size: max(1.5vh, 1.2vw);
   aspect-ratio: 1/1;
   height: 4ch;
   width: auto;
   border-radius: 4px;
   transition: all 0.3s;
-}
-div.cross-icon img:hover {
   cursor: pointer;
+}
+
+.cross-icon img:hover {
   background-color: #ebebeb;
   opacity: 0.8;
 }
 
-div.notes-navigation {
+.notes-navigation {
   width: 100%;
   display: flex;
-  justify-content: start;
-  align-items: center;
   gap: max(3vh, 2.5vw);
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 12px;
 }
-div.notes-navigation h2 {
+
+.notes-navigation h2 {
   font-size: max(1.7vh, 1.4vw);
   font-weight: 400;
   color: #7b7b7b;
-  padding: max(1.2vh, 0.9vw);
-  padding-left: 0;
-  text-align: left;
+  padding: max(1.2vh, 0.9vw) 0;
   transition: all 0.3s;
-}
-div.notes-navigation h2:hover {
   cursor: pointer;
+}
+
+.notes-navigation h2:hover {
   transform: translateY(-0.4vmax);
 }
-div.notes-navigation h2.current {
+
+.notes-navigation h2.current {
   color: #000;
   border-bottom: 3px solid #0047ff;
 }
 
 .notes-editor {
   display: none;
-  flex-direction: column;
-  gap: max(1vh, 0.7vw);
-}
-.notes-editor.explanations {
-  display: none;
-}
-.notes-editor.visible {
-  display: flex;
-}
-.notes-editor.visible .notes-editor > div:nth-child(1) {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  outline: 1px solid #ebeff1;
-  border-radius: 2px;
-}
-.notes-editor p {
-  padding: max(1.5vh, 1vw);
-  font-size: max(1.3vh, 1vw);
-  border-radius: 2px;
+  height: 100%;
+  overflow-y: auto;
 }
 
-.notes-editor > div > div {
+.notes-editor.visible {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: max(1vh, 0.7vw);
-  padding: max(1vh, 0.7vw) max(1.5vh, 1vw);
 }
-.notes-editor > div > div > div {
-  font-size: max(1vh, 0.7vw);
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 3ch;
-  padding: max(1.5vh, 1vw);
-  outline: 1px solid #ebeff1;
-  border-radius: 2px;
-  transition: all 0.3s;
-}
-.notes-editor > div > div > div:hover {
-  cursor: pointer;
-}
-.notes-editor > div[contenteditable="true"] {
-  display: flex;
-  min-height: 40vh;
-  overflow-y: auto;
-  padding: max(1.5vh, 1vw);
+
+.notes-editor p {
+  color: #666;
   font-size: max(1.3vh, 1vw);
-  color: #7b7b7b;
-  outline: 1px solid #ebeff1;
-  border-radius: 2px;
-  transition: all 0.3s;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  padding: max(1.5vh, 1vw);
 }
-.notes-editor > div[contenteditable="true"]:focus {
-  outline: 1px solid gray;
-  color: black;
+
+.editor-container {
+  height: calc(100% - 120px);
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 16px;
+  overflow-y: auto;
+}
+
+.ProseMirror {
+  padding: 16px;
+  min-height: 100%;
+  outline: none;
+  font-size: max(1.3vh, 1vw);
+  color: #333;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #adb5bd;
+  content: "Start typing...";
+  float: left;
+  height: 0;
+  pointer-events: none;
 }
 
 .notes-ui {
   width: 100%;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid #ddd;
   display: flex;
   align-items: center;
   gap: max(0.5vh, 0.2vw);
-  margin-top: 10px;
 }
+
 .save-button {
   min-width: 10ch;
   font-size: max(1.5vh, 1.2vw);
   font-weight: 500;
-  color: #fff;
-  background-color: #96aab5;
+  color: white;
+  background-color: #0066cc;
   border: none;
   border-radius: 40px;
   padding: max(1vh, 0.7vw) max(2vh, 1.5vw);
   margin-right: max(1.7vh, 1.4vw);
   transition: all 0.3s;
-}
-.save-button:hover {
   cursor: pointer;
-  opacity: 0.8;
-}
-div.checkbox {
-  font-size: max(1.5vh, 1.2vw);
-  aspect-ratio: 1/1;
-  height: 2ch;
-  width: auto;
-  border: 2px solid #7b7b7b;
-  margin-right: max(0.5vh, 0.3vw);
-  transition: all 0.3s;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-div.checkbox:hover {
-  cursor: pointer;
-  background-color: #ebeff1;
-}
-div.checkbox.checked {
-  /* background-image: url('../resources/notes-icons/checked-icon.png'); */
-}
-.notes-ui span {
-  font-size: max(1.3vh, 1vw);
-  font-style: italic;
-  font-weight: 500;
-  color: #7b7b7b;
-  margin-right: max(0.5vh, 0.3vw);
-}
-.notes-ui img {
-  font-size: max(1.5vh, 1.2vw);
-  aspect-ratio: 1/1;
-  height: 2.5ch;
-  width: auto;
-  transition: all 0.3s;
-}
-.notes-ui img:hover {
-  cursor: pointer;
-  transform: translateY(-0.2ch);
-  opacity: 0.8;
 }
 
-.custom-container {
-  width: 100%;
-  height: 90%;
+.save-button:hover {
+  background-color: #0052a3;
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #666;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.checkbox:hover {
+  background-color: #ebeff1;
+}
+
+.notes-ui span {
+  color: #666;
+  font-size: max(1.3vh, 1vw);
+  font-style: italic;
+}
+
+.notes-ui img {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.notes-ui img:hover {
+  transform: translateY(-2px);
+}
+
+.video-container {
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* TipTap specific styles */
+.tiptap-toolbar {
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f8f9fa;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .annotations-section {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .editor-container {
+    height: calc(100% - 100px);
+  }
+
+  .notes-ui {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .notes-navigation {
+    gap: max(2vh, 1.5vw);
+  }
+  
+  .notes-navigation h2 {
+    font-size: max(1.5vh, 1.2vw);
+  }
+}
+
+.editor-menu-bar {
+  padding: 8px 12px;
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f8fafc;
+  align-items: center;
+}
+.formatting-button {
+  width: 44px;  /* Increased from 36px */
+  height: 44px; /* Increased from 36px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+  padding: 0;
+}
+.button-text {
+  font-family: Arial, sans-serif;
+  font-size: 24px;  /* Increased from 18px */
+  font-weight: 600;
+  color: #4b5563;
+  line-height: 1;
+}
+/* Style for bullet list icon */
+.formatting-button[title="Bullet List"] .button-text {
+  font-size: 32px; /* Even larger for the bullet point */
+  line-height: 0.7;
+}
+
+/* Style for numbered list icon */
+.formatting-button[title="Numbered List"] .button-text {
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Style for link and undo icons */
+.formatting-button[title="Link"] .button-text,
+.formatting-button[title="Undo"] .button-text {
+  font-size: 28px;
+}
+
+.button-text.italic {
+  font-style: italic;
+  font-family: "Times New Roman", serif; /* Better italic appearance */
+}
+
+.formatting-button:hover {
+  background-color: #e2e8f0;
+}
+
+.formatting-button.is-active {
+  background-color: #e2e8f0;
+}
+
+.formatting-button.is-active .button-text {
+  color: #1a73e8;
+}
+
+/* Container styles */
+.editor-container {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  overflow: hidden;
   background-color: white;
 }
-.ql-editor.ql-blank {
-  height: 100px;
+
+.ProseMirror {
+  padding: 16px;
+  min-height: 120px;
+  color: #4b5563;
+  font-size: 16px;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  color: #9ca3af;
+  content: "You have no saved notes for this problem yet!";
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+.editor-menu-bar button {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 0.25rem;
+  font-family: Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #4b5563;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.editor-menu-bar button:hover {
+  background-color: #e2e8f0;
+}
+
+.editor-menu-bar button.is-active {
+  background-color: #e2e8f0;
+  color: #1a73e8;
+}
+
+.editor-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.ProseMirror {
+  padding: 1rem;
+  min-height: 150px;
+  outline: none;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  content: 'You have no saved notes for this problem yet!';
+  color: #9ca3af;
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Style for formatted text */
+.ProseMirror strong {
+  font-weight: bold;
+}
+
+.ProseMirror em {
+  font-style: italic;
+}
+
+.ProseMirror u {
+  text-decoration: underline;
+}
+
+.ProseMirror s {
+  text-decoration: line-through;
+}
+
+.ProseMirror ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.ProseMirror ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+}
+
+.ProseMirror a {
+  color: #1a73e8;
+  text-decoration: underline;
 }
