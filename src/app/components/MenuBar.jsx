@@ -31,7 +31,7 @@ const MenuBar = ({ editor }) => {
       </button>
       <button
         onClick={() => editor.chain().focus().toggleStrike().run()}
-        className={`formatting-button ${editor.isActive('strike') ? 'is-active' : ''}`}
+        className={`formatting-button strike-button ${editor.isActive('strike') ? 'is-active' : ''}`}
         title="Strikethrough"
       >
         <span className="button-text">S</span>
@@ -41,28 +41,28 @@ const MenuBar = ({ editor }) => {
         className={`formatting-button ${editor.isActive('bulletList') ? 'is-active' : ''}`}
         title="Bullet List"
       >
-        <span className="button-text">•</span>
+        <span className="bullet-list-icon">≡</span>
       </button>
       <button
         onClick={() => editor.chain().focus().toggleOrderedList().run()}
         className={`formatting-button ${editor.isActive('orderedList') ? 'is-active' : ''}`}
         title="Numbered List"
       >
-        <span className="button-text">1.</span>
+        <span className="ordered-list-icon">⒈</span>
       </button>
       <button
         onClick={() => editor.chain().focus().toggleLink().run()}
         className={`formatting-button ${editor.isActive('link') ? 'is-active' : ''}`}
         title="Link"
       >
-        <span className="button-text">⚯</span>
+        <span className="link-icon">🔗</span>
       </button>
       <button
         onClick={() => editor.chain().focus().undo().run()}
         className="formatting-button"
         title="Undo"
       >
-        <span className="button-text">↺</span>
+        <span className="undo-icon">↺</span>
       </button>
     </div>
   );

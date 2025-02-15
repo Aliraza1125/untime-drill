@@ -241,70 +241,92 @@
 }
 
 .editor-menu-bar {
-  padding: 8px 12px;
+  padding: 8px;
   display: flex;
-  gap: 12px;
+  gap: 6px;
   border-bottom: 1px solid #e2e8f0;
   background-color: #f8fafc;
   align-items: center;
 }
+
 .formatting-button {
-  width: 44px;  /* Increased from 36px */
-  height: 44px; /* Increased from 36px */
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: none;
-  border: none;
+  background: white;
+  border: 1px solid #d1d5db;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
   position: relative;
   padding: 0;
 }
+
 .button-text {
   font-family: Arial, sans-serif;
-  font-size: 24px;  /* Increased from 18px */
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   color: #4b5563;
   line-height: 1;
-}
-/* Style for bullet list icon */
-.formatting-button[title="Bullet List"] .button-text {
-  font-size: 32px; /* Even larger for the bullet point */
-  line-height: 0.7;
+  position: relative;
 }
 
-/* Style for numbered list icon */
-.formatting-button[title="Numbered List"] .button-text {
-  font-size: 24px;
-  font-weight: 500;
+/* Bold style */
+.formatting-button[title="Bold"] .button-text {
+  font-weight: 700;
 }
 
-/* Style for link and undo icons */
-.formatting-button[title="Link"] .button-text,
-.formatting-button[title="Undo"] .button-text {
-  font-size: 28px;
-}
-
+/* Italic style */
 .button-text.italic {
   font-style: italic;
-  font-family: "Times New Roman", serif; /* Better italic appearance */
+  font-family: "Times New Roman", serif;
+}
+
+/* Strike-through style */
+.strike-button .button-text {
+  position: relative;
+}
+
+.strike-button .button-text::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 50%;
+  height: 1px;
+  background-color: #4b5563;
+  transform: translateY(-50%);
+}
+
+/* List icons */
+.bullet-list-icon,
+.ordered-list-icon {
+  font-size: 18px;
+  line-height: 1;
+  position: relative;
+  top: -1px;
+}
+
+/* Link and undo icons */
+.link-icon,
+.undo-icon {
+  font-size: 16px;
+  line-height: 1;
 }
 
 .formatting-button:hover {
-  background-color: #e2e8f0;
+  border-color: #9ca3af;
+  background-color: #f9fafb;
 }
 
 .formatting-button.is-active {
-  background-color: #e2e8f0;
+  background-color: #e5e7eb;
+  border-color: #9ca3af;
 }
 
-.formatting-button.is-active .button-text {
-  color: #1a73e8;
-}
-
-/* Container styles */
+/* Editor container styles */
 .editor-container {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -326,82 +348,15 @@
   height: 0;
   pointer-events: none;
 }
-.editor-menu-bar button {
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: none;
-  border: none;
-  border-radius: 0.25rem;
-  font-family: Arial, sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  color: #4b5563;
-  cursor: pointer;
-  transition: all 0.2s;
-}
 
-.editor-menu-bar button:hover {
-  background-color: #e2e8f0;
-}
-
-.editor-menu-bar button.is-active {
-  background-color: #e2e8f0;
-  color: #1a73e8;
-}
-
-.editor-container {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.5rem;
-  overflow: hidden;
-}
-
-.ProseMirror {
-  padding: 1rem;
-  min-height: 150px;
+/* Focus state */
+.formatting-button:focus {
   outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
-.ProseMirror p.is-editor-empty:first-child::before {
-  content: 'You have no saved notes for this problem yet!';
-  color: #9ca3af;
-  float: left;
-  height: 0;
-  pointer-events: none;
-}
-
-/* Style for formatted text */
-.ProseMirror strong {
-  font-weight: bold;
-}
-
-.ProseMirror em {
-  font-style: italic;
-}
-
-.ProseMirror u {
-  text-decoration: underline;
-}
-
-.ProseMirror s {
-  text-decoration: line-through;
-}
-
-.ProseMirror ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
-}
-
-.ProseMirror ol {
-  list-style-type: decimal;
-  padding-left: 1.5rem;
-}
-
-.ProseMirror a {
-  color: #1a73e8;
-  text-decoration: underline;
+/* Active state */
+.formatting-button:active {
+  background-color: #e5e7eb;
 }
