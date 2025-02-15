@@ -1,5 +1,5 @@
 {
-  "name": "drill",
+  "name": "drill2",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/extension-color": "^2.11.5",
+    "@tiptap/extension-list-item": "^2.11.5",
+    "@tiptap/extension-text-align": "^2.11.5",
+    "@tiptap/react": "^2.11.5",
+    "@tiptap/starter-kit": "^2.11.5",
     "next": "15.1.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

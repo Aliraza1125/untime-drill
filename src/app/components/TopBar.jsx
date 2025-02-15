@@ -371,14 +371,12 @@ const TopBar = ({ timed }) => {
               alt="Pause"
             />
           </div>
-          {!timed && (
             <div
               onClick={() => setMenuopen((menuopen) => !menuopen)}
               class="notes-tools"
             >
               <img src="/icons/notes-icon.svg" />
             </div>
-          )}
         </div>
       </div>
       {menuopen && (
