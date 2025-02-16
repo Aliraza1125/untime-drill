@@ -46,7 +46,21 @@
 .annotations-section:not(.visible) {
   animation: slideOut 0.3s ease-in-out forwards;
 }
+/* Strike-through style */
+.strike-button .button-text {
+  position: relative;
+}
 
+.strike-button .button-text::after {
+  content: '';
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: 50%;
+  height: 1px;
+  background-color: #4b5563;
+  transform: translateY(-50%);
+}
 .cross-icon {
   width: 100%;
   display: flex;
