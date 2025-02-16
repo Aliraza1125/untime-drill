@@ -25,7 +25,7 @@ main .wrapper {
 
 .wrapper.visible {
   display: flex;
-  gap: max(1vh, 2vw);
+  gap: max(1vh, 1.5vw);
 }
 
 /* Left and Right Sections */
@@ -111,13 +111,13 @@ main .right {
   z-index: 1;
 }
 .eye-slash {
-  display: none;
+  display: block;
   position: absolute;
   height: 3ch;
   width: 3px;
   float: right;
   background-color: #808080;
-  transform: rotate(-55deg) translateX(0.5ch) translateY(0.7ch);
+  transform: rotate(-55deg) translateX(0.8ch) translateY(0.2ch);
 }
 
 /*!Higlighting functionality*/
