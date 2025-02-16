@@ -236,10 +236,10 @@ const TopBar = ({ timed }) => {
       <div className="top-bar">
         {timed ? (
           <div className="left">
-            <div className="exit-button">
+            {/* <div className="exit-button">
               <img src="/icons/x-icon.svg" alt="Exit" />
             </div>
-            <button className="submit-button">Submit</button>
+            <button className="submit-button">Submit</button> */}
           </div>
         ) : (
           <div className="left" />
@@ -364,19 +364,10 @@ const TopBar = ({ timed }) => {
             ) : (
               <div>
                 <span>
-                  Time remaining: {minutes < 10 ? `0${minutes}` : minutes}:
+                  {minutes < 10 ? `0${minutes}` : minutes}:
                   {seconds < 10 ? `0${seconds}` : seconds}
                 </span>
-                <div className="time-bar-container">
-                  <div
-                    className="time-bar"
-                    style={{
-                      width: `${timeBarWidth}%`,
-                      backgroundColor:
-                        minutes < 12 ? "#ff6a16" : minutes < 25 ? "#ffcc16" : "#037101",
-                    }}
-                  />
-                </div>
+              
               </div>
             )}
             <img

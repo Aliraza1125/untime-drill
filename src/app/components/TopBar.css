@@ -1,4 +1,3 @@
-/* TopBar.css */
 .top-bar {
   width: 100%;
   min-height: max(60px, 8vh);
@@ -6,77 +5,19 @@
   grid-template-columns: 1fr 2fr;
   align-items: center;
   box-shadow: 0 6px 16px -12px #000;
-  padding: 0 max(2vh, 1.5vw);
-  position: fixed;
-  top: 0;
-  z-index: 20;
-  font-family: "Roboto", sans-serif;
-  background-color: white;
+  padding: max(1.2vh, 0.8vw) max(2vh, 1.5vw);
 }
 
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-
-/* Left side of the bar */
+/*left side of the bar*/
 .top-bar .left {
   justify-self: start;
+  height: 80%;
   display: flex;
   align-items: center;
   gap: max(1vh, 0.7vw);
 }
 
-.left .exit-button {
-  aspect-ratio: 1/1;
-  width: auto;
-  height: 90%;
-  background-color: #dddddd;
-  padding: max(1vh, 0.7vw);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  transition: opacity 0.2s;
-}
-
-.left .exit-button:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-.exit-button img {
-  font-size: max(2.1vh, 1.8vw);
-  height: 1ch;
-  width: auto;
-}
-
-.submit-button {
-  min-width: 10ch;
-  height: 90%;
-  font-size: max(1.5vh, 1.2vw);
-  font-weight: 500;
-  background-color: #dddddd;
-  border: 1px solid #666666;
-  border-radius: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 0.2s;
-  padding: 2.5px;
-  user-select: none;
-}
-
-.submit-button:hover {
-  cursor: pointer;
-  opacity: 0.8;
-}
-
-/* Right side of the bar */
+/*right side of the bar*/
 .top-bar .right {
   height: 100%;
   justify-self: end;
@@ -84,43 +25,36 @@
   align-items: center;
   gap: max(1vh, 0.7vw);
 }
-
 .top-bar .separator {
   height: 80%;
   width: 2px;
   background-color: #aeaeae;
 }
-
 .right .text-tools {
   height: 100%;
   display: flex;
   align-items: center;
   gap: max(0.5vh, 0.2vw);
 }
-
 .top-bar .tool-icon {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);
   height: 3ch;
   width: auto;
 }
-
 .top-bar .tool-icon:hover {
   cursor: pointer;
 }
-
 .tool-icon.selected {
   outline: 3px solid #727272;
 }
 
-/* Display tools */
 .display-tools {
   height: 100%;
   display: flex;
   align-items: center;
   gap: max(0.5vh, 0.2vw);
 }
-
 .display-tools img {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);
@@ -128,99 +62,79 @@
   width: auto;
   position: relative;
 }
-
 .display-tools img:hover {
   cursor: pointer;
 }
-
-/* Dropdown menu */
-.dropdown {
+/**Dropdown menu for display tools*/
+.dropdown{
   position: absolute;
   min-width: 160px;
   display: none;
   flex-direction: column;
   padding: max(1.2vh, 1vw) max(1vh, 0.7vw);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   background-color: #fff;
-  z-index: 1000;
+  z-index: 1;
 }
-
 .dropdown.active {
   display: flex;
 }
-
 .dropdown > div {
   display: grid;
   grid-template-columns: 4fr 1fr;
   padding: max(0.7vh, 0.4vw);
 }
-
 .dropdown > div span {
   font-size: max(1.3vh, 1vw);
   user-select: none;
 }
-
 .dropdown > div input {
   cursor: pointer;
 }
 
-/* Timing tools */
+
 .timing-tools {
   display: flex;
   align-items: center;
   gap: max(1.2vh, 0.8vw);
 }
-
 .timing-tools > div {
   display: flex;
   flex-direction: column;
   gap: max(0.5vh, 0.2vw);
 }
-
 .timing-tools > div span {
-  font-size: max(1.5vh, 1.2vw);
-  font-weight: 300;
+  font-size: max(1.6vh, 1.3vw); 
+  font-weight: 500;
   user-select: none;
 }
-
 .time-bar-container {
   width: 100%;
   height: 6px;
   background-color: #d2d2d2;
 }
-
 .time-bar {
   width: 100%;
   height: 100%;
   background-color: #037101;
-  transition: width 0.3s ease, background-color 0.3s ease;
 }
-
 .timing-tools > img {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);
   height: 3ch;
   width: auto;
-  cursor: pointer;
 }
-
 .timing-tools > img:hover {
+  cursor: pointer;
   opacity: 0.8;
 }
 
-/* Notes tools */
 .notes-tools {
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
 }
-
-.notes-tools:hover {
-  opacity: 0.8;
-}
-
 .notes-tools > img {
   aspect-ratio: 1/1;
   font-size: max(2.1vh, 1.8vw);

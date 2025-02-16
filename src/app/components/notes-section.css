@@ -1,4 +1,5 @@
-/* notes-section.css */
+/* Slide Animations */
+/* Slide Animations */
 @keyframes slideIn {
   from {
     transform: translateX(100%);
@@ -23,12 +24,12 @@
 
 .annotations-section {
   position: fixed;
-  top: max(60px, 8vh);
+  top: 0;
   right: 0;
   width: max(35vw, 500px);
-  height: calc(100vh - max(60px, 8vh));
+  height: 100vh;
   background-color: white;
-  box-shadow: -4px 0 12px -8px #000;
+  box-shadow: 0 6px 12px 0px #000;
   z-index: 2000;
   padding: max(2.5vh, 2vw);
   display: flex;
@@ -93,153 +94,40 @@
   color: #000;
   border-bottom: 3px solid #0047ff;
 }
-
+/* Editor Section */
 .notes-editor {
   display: none;
-  height: 100%;
+  flex: 1;
+  padding: 16px 0px;
   overflow-y: auto;
 }
 
 .notes-editor.visible {
   display: flex;
   flex-direction: column;
-  gap: max(1vh, 0.7vw);
 }
 
 .notes-editor p {
-  color: #666;
-  font-size: max(1.3vh, 1vw);
+  font-size: 14px;
   line-height: 1.5;
+  color: #666;
+  padding: 0px;
   margin-bottom: 16px;
-  padding: max(1.5vh, 1vw);
+  border-radius: 4px;
+  height: auto;
 }
 
+/* Editor Container */
 .editor-container {
-  height: calc(100% - 120px);
+  flex: 1;
   background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
-  margin-top: 16px;
-  overflow-y: auto;
-}
-
-.ProseMirror {
-  padding: 16px;
-  min-height: 100%;
-  outline: none;
-  font-size: max(1.3vh, 1vw);
-  color: #333;
-}
-
-.ProseMirror p.is-editor-empty:first-child::before {
-  color: #adb5bd;
-  content: "Start typing...";
-  float: left;
-  height: 0;
-  pointer-events: none;
-}
-
-.notes-ui {
-  width: 100%;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 1px solid #ddd;
-  display: flex;
-  align-items: center;
-  gap: max(0.5vh, 0.2vw);
-}
-
-.save-button {
-  min-width: 10ch;
-  font-size: max(1.5vh, 1.2vw);
-  font-weight: 500;
-  color: white;
-  background-color: #0066cc;
-  border: none;
-  border-radius: 40px;
-  padding: max(1vh, 0.7vw) max(2vh, 1.5vw);
-  margin-right: max(1.7vh, 1.4vw);
-  transition: all 0.3s;
-  cursor: pointer;
-}
-
-.save-button:hover {
-  background-color: #0052a3;
-}
-
-.checkbox {
-  width: 18px;
-  height: 18px;
-  border: 2px solid #666;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.checkbox:hover {
-  background-color: #ebeff1;
-}
-
-.notes-ui span {
-  color: #666;
-  font-size: max(1.3vh, 1vw);
-  font-style: italic;
-}
-
-.notes-ui img {
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
-  transition: transform 0.3s;
-}
-
-.notes-ui img:hover {
-  transform: translateY(-2px);
-}
-
-.video-container {
-  height: 100%;
-  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
-/* TipTap specific styles */
-.tiptap-toolbar {
-  padding: 8px;
-  border-bottom: 1px solid #ddd;
-  background-color: #f8f9fa;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .annotations-section {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .editor-container {
-    height: calc(100% - 100px);
-  }
-
-  .notes-ui {
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  .notes-navigation {
-    gap: max(2vh, 1.5vw);
-  }
-  
-  .notes-navigation h2 {
-    font-size: max(1.5vh, 1.2vw);
-  }
-}
-
+/* Editor Menu Bar */
 .editor-menu-bar {
   padding: 8px;
   display: flex;
@@ -260,60 +148,6 @@
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.2s;
-  position: relative;
-  padding: 0;
-}
-
-.button-text {
-  font-family: Arial, sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  color: #4b5563;
-  line-height: 1;
-  position: relative;
-}
-
-/* Bold style */
-.formatting-button[title="Bold"] .button-text {
-  font-weight: 700;
-}
-
-/* Italic style */
-.button-text.italic {
-  font-style: italic;
-  font-family: "Times New Roman", serif;
-}
-
-/* Strike-through style */
-.strike-button .button-text {
-  position: relative;
-}
-
-.strike-button .button-text::after {
-  content: '';
-  position: absolute;
-  left: -1px;
-  right: -1px;
-  top: 50%;
-  height: 1px;
-  background-color: #4b5563;
-  transform: translateY(-50%);
-}
-
-/* List icons */
-.bullet-list-icon,
-.ordered-list-icon {
-  font-size: 18px;
-  line-height: 1;
-  position: relative;
-  top: -1px;
-}
-
-/* Link and undo icons */
-.link-icon,
-.undo-icon {
-  font-size: 16px;
-  line-height: 1;
 }
 
 .formatting-button:hover {
@@ -326,19 +160,14 @@
   border-color: #9ca3af;
 }
 
-/* Editor container styles */
-.editor-container {
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  overflow: hidden;
-  background-color: white;
-}
-
+/* Editor Content Area */
 .ProseMirror {
+  flex: 1;
   padding: 16px;
-  min-height: 120px;
   color: #4b5563;
-  font-size: 16px;
+  font-size: 14px;
+  outline: none;
+  overflow-y: auto;
 }
 
 .ProseMirror p.is-editor-empty:first-child::before {
@@ -349,14 +178,75 @@
   pointer-events: none;
 }
 
-/* Focus state */
-.formatting-button:focus {
-  outline: none;
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+/* Bottom UI */
+.notes-ui {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: max(0.5vh, 0.2vw);
+}
+.save-button {
+  min-width: 10ch;
+  font-size: max(1.5vh, 1.2vw);
+  font-weight: 500;
+  color: #fff;
+  background-color: #96aab5;
+  border: none;
+  border-radius: 40px;
+  padding: max(1vh, 0.7vw) max(2vh, 1.5vw);
+  margin-right: max(1.7vh, 1.4vw);
+  transition: all 0.3s;
+}
+.save-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+div.checkbox {
+  font-size: max(1.5vh, 1.2vw);
+  aspect-ratio: 1/1;
+  height: 2ch;
+  width: auto;
+  border: 2px solid #7b7b7b;
+  margin-right: max(0.5vh, 0.3vw);
+  transition: all 0.3s;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+div.checkbox:hover {
+  cursor: pointer;
+  background-color: #ebeff1;
+} 
+div.checkbox.checked {
+  background-image: url('/icons/checked-icon.png');
+}
+.notes-ui span {
+  font-size: max(1.3vh, 1vw);
+  font-style: italic;
+  font-weight: 500;
+  color: #7b7b7b;
+  margin-right: max(0.5vh, 0.3vw);
+}
+.notes-ui img {
+  font-size: max(1.5vh, 1.2vw);
+  aspect-ratio: 1/1;
+  height: 2.5ch;
+  width: auto;
+  transition: all 0.3s;
+}
+.notes-ui img:hover {
+  cursor: pointer;
+  transform: translateY(-0.2ch);
+  opacity: 0.8;
 }
 
-/* Active state */
-.formatting-button:active {
-  background-color: #e5e7eb;
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .annotations-section {
+    width: 100%;
+  }
+  
+  .notes-navigation {
+    gap: 24px;
+  }
 }
